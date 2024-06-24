@@ -8,7 +8,18 @@
   </head>
   <body>
     <div id="app">
-      <h1>TypeScript Sandbox</h1>
+      <div class="turno-display">
+        <h1 class="numero-turno">01</h1>
+        <p class="texto-turno">Por favor, acérquese al mostrador</p>
+      </div>
+      <button class="anterior">Anterior</button>
+      <button class="siguiente">Siguiente</button>
+      <button class="reset">Reset</button>
+      <div id="contenedor">
+        <label for="numero-elegido">Introduzca el número del turno:</label>
+        <input id="numero-elegido" type="number" min="1" />
+        <button class="establecer">Intro</button>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
