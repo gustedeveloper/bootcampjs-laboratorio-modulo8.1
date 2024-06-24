@@ -1,80 +1,47 @@
 import "./style.css";
 
-interface GrupoMusical {
-    nombre: string;
-    añoDeFundacion: number;
-    activo: boolean;
-    generoMusical: string;
+let turno = document.querySelector(".numero-turno").innerHTML;
+
+const numeroTurno = document.querySelector(".numero-turno");
+const botonAnterior = document.querySelector(".anterior");
+const botonSiguiente = document.querySelector(".siguiente");
+const botonReset = document.querySelector(".reset");
+const botonIntro = document.querySelector(".establecer");
+
+function dosDigitos(num) {
+    return num.toString().padStart(2, '0');
+  }
+
+function turnoAnterior() {
+    turno--;
+   if (turno <= 1) {
+        reset();
+      } else {
+        numeroTurno.innerText = dosDigitos(turno);
+      } 
 }
 
-const popRock = "🎵 Pop Rock";
-const rock = "🎸 Rock";
-const hardRock = "🤘 Hard Rock";
-const clasica = "🎼 Clásica";
-
-const estiloTitulo = "font-weight:bold; font-size:16px; background-color:green";
-
-const primerGrupoMusical: GrupoMusical  = {
-    nombre: "The Beatles",
-    añoDeFundacion: 1960,
-    activo: true,
-    generoMusical: popRock
+function turnoSiguiente() {
+    turno++;
+    numeroTurno.innerText = dosDigitos(turno);
+    
 }
 
-const segundoGrupoMusical: GrupoMusical = {
-    nombre: "Queen",
-    añoDeFundacion: 1970,
-    activo: false,
-    generoMusical: rock
+function reset() {
+    turno = 1;
+    numeroTurno.innerText = dosDigitos(turno);
 }
 
-const tercerGrupoMusical: GrupoMusical = {
-    nombre: "AC DC",
-    añoDeFundacion: 1973,
-    activo: true,
-    generoMusical: hardRock
-}
+function establecerTurnoManual() {
+    const numeroEstablecido = parseInt(document.querySelector("#numero-elegido").value);
+    turno = numeroEstablecido;
+    numeroTurno.innerText = dosDigitos(numeroEstablecido);
+     
+   }
 
-const compositor: GrupoMusical = {
-    nombre: "Ludwig van Beethoven",
-    añoDeFundacion: 1770,
-    activo: false,
-    generoMusical: clasica
-}
+botonAnterior.addEventListener("click", turnoAnterior);
+botonSiguiente.addEventListener("click", turnoSiguiente);
+botonReset.addEventListener("click", reset);
+botonIntro.addEventListener("click", establecerTurnoManual);
 
-const cuartoGrupoMusical: GrupoMusical = {
-    nombre: "The Rolling Stones",
-    añoDeFundacion: 1962,
-    activo: true,
-    generoMusical: rock
-}
 
-console.log(`%c${primerGrupoMusical.nombre}`, estiloTitulo);
-console.log(`se fundó en ${primerGrupoMusical.añoDeFundacion}
-activo: ${primerGrupoMusical.activo}
-su género musical: ${primerGrupoMusical.generoMusical}`
-);
-
-console.log(`%c${segundoGrupoMusical.nombre}`, estiloTitulo);
-console.log(`se fundó en ${segundoGrupoMusical.añoDeFundacion}
-activo: ${segundoGrupoMusical.activo}
-su género musical: ${segundoGrupoMusical.generoMusical}`
-);
-
-console.log(`%c${tercerGrupoMusical.nombre}`, estiloTitulo);
-console.log(`se fundó en ${tercerGrupoMusical.añoDeFundacion}
-activo: ${tercerGrupoMusical.activo}
-su género musical: ${tercerGrupoMusical.generoMusical}`
-);
-
-console.log(`%c${compositor.nombre}`, estiloTitulo);
-console.log(`nació en ${compositor.añoDeFundacion}
-activo: ${compositor.activo}
-su género musical: ${compositor.generoMusical}`
-);
-
-console.log(`%c${cuartoGrupoMusical.nombre}`, estiloTitulo);
-console.log(`se fundó en ${cuartoGrupoMusical.añoDeFundacion}
-activo: ${cuartoGrupoMusical.activo}
-su género musical: ${cuartoGrupoMusical.generoMusical}`
-);
