@@ -1,19 +1,22 @@
 import "./style.css";
 
-let turno: number = parseInt((document.querySelector(".numero-turno") as HTMLElement).innerHTML,10);
+const numeroTurno = document.querySelector(".numero-turno");
+let turno: number = 1;
 
-const numeroTurno = document.querySelector(".numero-turno") as HTMLElement | null;
-const botonAnterior = document.querySelector(".anterior") as HTMLElement | null;
-const botonSiguiente = document.querySelector(".siguiente") as HTMLElement | null;
-const botonReset = document.querySelector(".reset") as HTMLElement | null;
-const botonIntro = document.querySelector(".establecer") as HTMLElement | null;
+if (numeroTurno instanceof HTMLElement) {
+    turno = parseInt(numeroTurno.innerHTML, 10);
+}
+const botonAnterior = document.querySelector(".anterior");
+const botonSiguiente = document.querySelector(".siguiente");
+const botonReset = document.querySelector(".reset");
+const botonIntro = document.querySelector(".establecer");
 
 function dosDigitos(num: number): string {
     return num.toString().padStart(2, '0');
   }
 
 function turnoAnterior(): void {
-    if (numeroTurno) {
+    if (numeroTurno instanceof HTMLElement) {
     turno--;
         if (turno <= 1) {
         reset();
@@ -24,40 +27,42 @@ function turnoAnterior(): void {
 }
 
 function turnoSiguiente(): void {
-    if (numeroTurno) {
+    if (numeroTurno instanceof HTMLElement) {
     turno++;
     numeroTurno.innerText = dosDigitos(turno);
     }
 }
 
 function reset() {
-    if (numeroTurno) {
+    const numeroElegido = document.querySelector("#numero-elegido");
+    if (numeroTurno instanceof HTMLElement && numeroElegido instanceof HTMLInputElement) {
     turno = 1;
     numeroTurno.innerText = dosDigitos(turno);
+    numeroElegido.value = "";
     }
 }
 
 function establecerTurnoManual() {
-    const numeroElegido = document.querySelector("#numero-elegido") as HTMLInputElement | null; 
-    if (numeroElegido && numeroTurno) {
+    const numeroElegido = document.querySelector("#numero-elegido");
+    if (numeroElegido instanceof HTMLInputElement && numeroTurno instanceof HTMLElement) {
     const numeroEstablecido = parseInt(numeroElegido.value, 10);
     turno = numeroEstablecido;
     numeroTurno.innerText = dosDigitos(numeroEstablecido);
     }
    }
    
-if (botonAnterior) {
+if (botonAnterior instanceof HTMLElement) {
 botonAnterior.addEventListener("click", turnoAnterior);
 }
 
-if (botonSiguiente) {
+if (botonSiguiente instanceof HTMLElement) {
 botonSiguiente.addEventListener("click", turnoSiguiente);
 }
 
-if (botonReset) {
+if (botonReset instanceof HTMLElement) {
 botonReset.addEventListener("click", reset);
 }
 
-if (botonIntro) {
+if (botonIntro instanceof HTMLElement) {
 botonIntro.addEventListener("click", establecerTurnoManual);
 }
