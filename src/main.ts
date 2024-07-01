@@ -11,7 +11,7 @@ type Estado =
 | "SEIS_O_SIETE"
 
 const imagen = document.getElementById("imagen");
-const mensaje = document.getElementById("mensaje");
+let mensaje = document.getElementById("mensaje");
 const botonDameCarta = document.getElementById("pedir-carta");
 const botonQueHubiesePasado = document.getElementById("que-hubiese-pasado");
 
@@ -71,7 +71,6 @@ const comprobacionPuntuacion = (puntuacion) : string => {
 
   const resultado = (estado: Estado) => {
     let texto = "";
-    let mensaje = document.getElementById("mensaje");
     estado = comprobacionPuntuacion(puntuacion);
     switch(estado) {
         case "PERDEDOR":
@@ -130,4 +129,14 @@ const gameOver = (estado) => {
     botonMePlanto.disabled = true;
   }
   } 
+}
+
+const nuevaPartida = () => {
+  mostrarCarta(0);
+  if (botonNuevaPartida instanceof HTMLButtonElement && botonDameCarta instanceof HTMLButtonElement && botonQueHubiesePasado instanceof HTMLButtonElement && mensaje instanceof HTMLElement) {
+  botonNuevaPartida.disabled = true;
+  botonDameCarta.disabled = false;
+  botonQueHubiesePasado.style = "visibility: hidden";
+  mensaje.innerHTML = "";
+}
 }
