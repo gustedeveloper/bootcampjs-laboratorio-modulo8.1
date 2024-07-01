@@ -1,68 +1,24 @@
 import "./style.css";
 
-const numeroTurno = document.querySelector(".numero-turno");
-let turno: number = 1;
+let puntuacion: number = 0;
+/*let estado;*/
 
-if (numeroTurno instanceof HTMLElement) {
-    turno = parseInt(numeroTurno.innerHTML, 10);
-}
-const botonAnterior = document.querySelector(".anterior");
-const botonSiguiente = document.querySelector(".siguiente");
-const botonReset = document.querySelector(".reset");
-const botonIntro = document.querySelector(".establecer");
+type Estado = 
+| "PERDEDOR"
+| "GANADOR"
+| "MENOR_DE_CUATRO"
+| "CINCO"
+| "SEIS_O_SIETE"
 
-function dosDigitos(num: number): string {
-    return num.toString().padStart(2, '0');
-  }
+const imagen = document.getElementById("imagen");
+const mensaje = document.getElementById("mensaje");
+const botonDameCarta = document.getElementById("pedir-carta");
+const botonQueHubiesePasado = document.getElementById("que-hubiese-pasado");
 
-function turnoAnterior(): void {
-    if (numeroTurno instanceof HTMLElement) {
-    turno--;
-        if (turno <= 1) {
-        reset();
-      } else {
-        numeroTurno.innerText = dosDigitos(turno);
-      } 
-    }
-}
+const botonNuevaPartida = document.getElementById("nueva-partida");
+const botonMePlanto = document.getElementById("me-planto");
 
-function turnoSiguiente(): void {
-    if (numeroTurno instanceof HTMLElement) {
-    turno++;
-    numeroTurno.innerText = dosDigitos(turno);
-    }
-}
-
-function reset() {
-    const numeroElegido = document.querySelector("#numero-elegido");
-    if (numeroTurno instanceof HTMLElement && numeroElegido instanceof HTMLInputElement) {
-    turno = 1;
-    numeroTurno.innerText = dosDigitos(turno);
-    numeroElegido.value = "";
-    }
-}
-
-function establecerTurnoManual() {
-    const numeroElegido = document.querySelector("#numero-elegido");
-    if (numeroElegido instanceof HTMLInputElement && numeroTurno instanceof HTMLElement) {
-    const numeroEstablecido = parseInt(numeroElegido.value, 10);
-    turno = numeroEstablecido;
-    numeroTurno.innerText = dosDigitos(numeroEstablecido);
-    }
-   }
-   
-if (botonAnterior instanceof HTMLElement) {
-botonAnterior.addEventListener("click", turnoAnterior);
-}
-
-if (botonSiguiente instanceof HTMLElement) {
-botonSiguiente.addEventListener("click", turnoSiguiente);
-}
-
-if (botonReset instanceof HTMLElement) {
-botonReset.addEventListener("click", reset);
-}
-
-if (botonIntro instanceof HTMLElement) {
-botonIntro.addEventListener("click", establecerTurnoManual);
+if (botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
+botonNuevaPartida.disabled = true;
+botonMePlanto.disabled = true;
 }
