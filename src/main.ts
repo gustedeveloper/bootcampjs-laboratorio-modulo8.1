@@ -111,3 +111,12 @@ const mePlanto = () : void => {
     }
   }
 }
+
+const queHubiesePasado = () => {
+  dameCarta();
+  resultado(estado);
+  if (botonQueHubiesePasado instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
+  botonQueHubiesePasado.style = "visibility: hidden";
+  botonMePlanto.disabled = true;
+}
+}
