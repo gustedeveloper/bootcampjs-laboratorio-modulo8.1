@@ -140,3 +140,58 @@ const nuevaPartida = () => {
   mensaje.innerHTML = "";
 }
 }
+
+const mostrarCarta = (carta) => {
+  switch(carta) {
+    case 0:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg");
+    puntuacion = 0;  
+    break;
+    case 1:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg");
+    puntuacion += 1;
+    break;
+    case 2:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg");
+    puntuacion += 2;
+    break;
+    case 3:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg");
+    puntuacion += 3;
+    break;
+    case 4:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg");
+    puntuacion += 4;
+    break;
+    case 5:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg");
+    puntuacion += 5;
+    break;
+    case 6:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg");
+    puntuacion += 6;
+    break;
+    case 7:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg");
+    puntuacion += 7;
+    break;
+    case 10:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg");
+    puntuacion += 0.5;
+    break;
+    case 11:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg");
+    puntuacion += 0.5;
+    break;
+    case 12:
+    imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg");
+    puntuacion += 0.5;
+    break;
+    default: 
+    console.error("Error: Carta inválida")
+    break;
+  }
+  muestraPuntuacion();
+  return carta;
+  
+  }
