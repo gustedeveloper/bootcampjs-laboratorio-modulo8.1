@@ -120,3 +120,14 @@ const queHubiesePasado = () => {
   botonMePlanto.disabled = true;
 }
 }
+
+const gameOver = (estado) => {
+  if (estado === "PERDEDOR") {
+    if (botonDameCarta instanceof HTMLButtonElement && botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
+    botonDameCarta.disabled = true;
+    resultado(estado);
+    botonNuevaPartida.disabled = false;
+    botonMePlanto.disabled = true;
+  }
+  } 
+}
