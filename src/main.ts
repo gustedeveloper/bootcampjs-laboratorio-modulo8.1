@@ -97,3 +97,17 @@ const comprobacionPuntuacion = (puntuacion) : string => {
     mensaje.innerHTML = texto;
   }
 }
+
+const mePlanto = () : void => {
+  resultado(estado);
+  if (botonDameCarta instanceof HTMLButtonElement && botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
+  botonDameCarta.disabled = true;
+  botonNuevaPartida.disabled = false;
+  botonMePlanto.disabled = true;
+}
+  if (comprobacionPuntuacion(puntuacion) !== "GANADOR") {
+    if (botonQueHubiesePasado instanceof HTMLButtonElement) {
+      botonQueHubiesePasado.style = "visibility: visible";
+    }
+  }
+}
