@@ -68,3 +68,32 @@ const comprobacionPuntuacion = (puntuacion) : string => {
       return "SEIS_O_SIETE";
   } 
   }
+
+  const resultado = (estado: Estado) => {
+    let texto = "";
+    let mensaje = document.getElementById("mensaje");
+    estado = comprobacionPuntuacion(puntuacion);
+    switch(estado) {
+        case "PERDEDOR":
+        texto = "Te has pasado de siete media. ¡HAS PERDIDO! ¿Lo intentas de nuevo?"
+        break;
+        case "GANADOR": 
+        texto = "¡Lo has clavado! ¡Enhorabuena!";
+        break;
+        case "MENOR_DE_CUATRO": 
+        texto = "Has sido muy conservador.";
+        break;
+        case "CINCO":
+        texto = "Te ha entrado el canguelo, ¿eh?";
+        break;
+        case "SEIS_O_SIETE":
+        texto = "Casi casi...";
+        break;
+        default:
+        texto = "Algo ha ido mal...";
+        break;
+    }
+    if (mensaje instanceof HTMLElement) {
+    mensaje.innerHTML = texto;
+  }
+}
