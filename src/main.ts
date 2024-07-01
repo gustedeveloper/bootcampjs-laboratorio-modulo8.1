@@ -33,3 +33,38 @@ const muestraPuntuacion = () : void => {
 }
 
 muestraPuntuacion();
+
+const dameCarta = () => {
+  let carta = consigueCartaRandom();
+  
+  if (carta > 7) {
+      carta = carta + 2;
+  }
+
+  mostrarCarta(carta);
+  estado = comprobacionPuntuacion(puntuacion);
+  if (carta !== 0) {
+    if (botonMePlanto instanceof HTMLButtonElement) {
+    botonMePlanto.disabled = false;
+  }
+  }
+  gameOver(estado);
+}
+
+const comprobacionPuntuacion = (puntuacion) : string => {
+  if (puntuacion > 7.5) {
+      return "PERDEDOR";
+  }
+  if (puntuacion === 7.5 ) {
+      return "GANADOR";
+  }
+  if (puntuacion <= 4) {
+      return "MENOR_DE_CUATRO";
+  }   
+  if (puntuacion <= 5) {
+      return "CINCO";
+  }  
+  if (puntuacion <= 6 || puntuacion <= 7) {
+      return "SEIS_O_SIETE";
+  } 
+  }
