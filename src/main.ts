@@ -1,7 +1,7 @@
 import "./style.css";
 
 let puntuacion : number = 0;
-/*let estado;*/
+let estado : Estado;
 
 type Estado = 
 | "PERDEDOR"
@@ -34,7 +34,7 @@ const muestraPuntuacion = () : void => {
 
 muestraPuntuacion();
 
-const dameCarta = () => {
+const dameCarta = () : void => {
   let carta = consigueCartaRandom();
   
   if (carta > 7) {
@@ -42,7 +42,7 @@ const dameCarta = () => {
   }
 
   mostrarCarta(carta);
-  estado = comprobacionPuntuacion(puntuacion);
+  let estado = comprobacionPuntuacion(puntuacion);
   if (carta !== 0) {
     if (botonMePlanto instanceof HTMLButtonElement) {
     botonMePlanto.disabled = false;
@@ -51,7 +51,7 @@ const dameCarta = () => {
   gameOver(estado);
 }
 
-const comprobacionPuntuacion = (puntuacion) : string => {
+const comprobacionPuntuacion = (puntuacion: number) : Estado => {
   if (puntuacion > 7.5) {
       return "PERDEDOR";
   }
@@ -67,9 +67,10 @@ const comprobacionPuntuacion = (puntuacion) : string => {
   if (puntuacion <= 6 || puntuacion <= 7) {
       return "SEIS_O_SIETE";
   } 
+  return "PERDEDOR";
   }
 
-  const resultado = (estado: Estado) => {
+  const resultado = (estado: Estado) : void => {
     let texto = "";
     estado = comprobacionPuntuacion(puntuacion);
     switch(estado) {
@@ -106,21 +107,21 @@ const mePlanto = () : void => {
 }
   if (comprobacionPuntuacion(puntuacion) !== "GANADOR") {
     if (botonQueHubiesePasado instanceof HTMLButtonElement) {
-      botonQueHubiesePasado.style = "visibility: visible";
+      botonQueHubiesePasado.style.visibility = "visible";
     }
   }
 }
 
-const queHubiesePasado = () => {
+const queHubiesePasado = () : void => {
   dameCarta();
   resultado(estado);
   if (botonQueHubiesePasado instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
-  botonQueHubiesePasado.style = "visibility: hidden";
+  botonQueHubiesePasado.style.visibility = "hidden";
   botonMePlanto.disabled = true;
 }
 }
 
-const gameOver = (estado) => {
+const gameOver = (estado: Estado) : void => {
   if (estado === "PERDEDOR") {
     if (botonDameCarta instanceof HTMLButtonElement && botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
     botonDameCarta.disabled = true;
@@ -131,17 +132,19 @@ const gameOver = (estado) => {
   } 
 }
 
-const nuevaPartida = () => {
+const nuevaPartida = () : void => {
   mostrarCarta(0);
   if (botonNuevaPartida instanceof HTMLButtonElement && botonDameCarta instanceof HTMLButtonElement && botonQueHubiesePasado instanceof HTMLButtonElement && mensaje instanceof HTMLElement) {
   botonNuevaPartida.disabled = true;
   botonDameCarta.disabled = false;
-  botonQueHubiesePasado.style = "visibility: hidden";
+  botonQueHubiesePasado.style.visibility = "hidden";
   mensaje.innerHTML = "";
 }
 }
 
-const mostrarCarta = (carta) => {
+const mostrarCarta = (carta : number) : void => {
+  let resultadoCarta = 0;
+  if (imagen instanceof HTMLImageElement) {
   switch(carta) {
     case 0:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg");
@@ -149,51 +152,51 @@ const mostrarCarta = (carta) => {
     break;
     case 1:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg");
-    puntuacion += 1;
+    resultadoCarta += 1;
     break;
     case 2:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg");
-    puntuacion += 2;
+    resultadoCarta += 2;
     break;
     case 3:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg");
-    puntuacion += 3;
+    resultadoCarta += 3;
     break;
     case 4:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg");
-    puntuacion += 4;
+    resultadoCarta += 4;
     break;
     case 5:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg");
-    puntuacion += 5;
+    resultadoCarta += 5;
     break;
     case 6:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg");
-    puntuacion += 6;
+    resultadoCarta += 6;
     break;
     case 7:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg");
-    puntuacion += 7;
+    resultadoCarta += 7;
     break;
     case 10:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg");
-    puntuacion += 0.5;
+    resultadoCarta += 0.5;
     break;
     case 11:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg");
-    puntuacion += 0.5;
+    resultadoCarta += 0.5;
     break;
     case 12:
     imagen.setAttribute("src", "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg");
-    puntuacion += 0.5;
+    resultadoCarta += 0.5;
     break;
     default: 
     console.error("Error: Carta inválida")
     break;
   }
+  puntuacion += resultadoCarta;
   muestraPuntuacion();
-  return carta;
-  
+  }
   }
 
 
