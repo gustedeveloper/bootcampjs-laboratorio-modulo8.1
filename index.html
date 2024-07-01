@@ -4,23 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Juego de las Siete Media</title>
   </head>
   <body>
-    <div id="app">
-      <div class="turno-display">
-        <h1 class="numero-turno">01</h1>
-        <p class="texto-turno">Por favor, acérquese al mostrador</p>
-      </div>
-      <button class="anterior">Anterior</button>
-      <button class="siguiente">Siguiente</button>
-      <button class="reset">Reset</button>
-      <div id="contenedor">
-        <label for="numero-elegido">Introduzca el número del turno:</label>
-        <input id="numero-elegido" type="number" min="1" />
-        <button class="establecer">Intro</button>
-      </div>
+    <h1>Juego de las Siete Media</h1>
+    <div id="contenedor-imagen">
+      <img
+        id="imagen"
+        src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
+      />
+      <button id="que-hubiese-pasado">¿Y si hubieses continuado?</button>
     </div>
+    <div id="display">
+      <h2>Puntuación</h2>
+      <p id="puntuacion"></p>
+    </div>
+    <div id="mensaje"></div>
+    <div id="contenedor-botones">
+      <button id="pedir-carta">Pedir carta</button>
+      <button id="nueva-partida">Nueva partida</button>
+      <button id="me-planto">Me planto</button>
+    </div>
+  </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
