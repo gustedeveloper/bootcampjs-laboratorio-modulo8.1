@@ -1,6 +1,6 @@
 import "./style.css";
 
-let puntuacion: number = 0;
+let puntuacion : number = 0;
 /*let estado;*/
 
 type Estado = 
@@ -22,3 +22,14 @@ if (botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof H
 botonNuevaPartida.disabled = true;
 botonMePlanto.disabled = true;
 }
+
+const consigueCartaRandom = () => Math.floor(Math.random() * 10) + 1;
+
+const muestraPuntuacion = () : void => {
+  const elementPuntuacion = document.getElementById("puntuacion");
+  if (elementPuntuacion instanceof HTMLInputElement) {
+  elementPuntuacion.innerHTML = puntuacion;
+  }
+}
+
+muestraPuntuacion();
