@@ -23,12 +23,12 @@ botonNuevaPartida.disabled = true;
 botonMePlanto.disabled = true;
 }
 
-const consigueCartaRandom = () => Math.floor(Math.random() * 10) + 1;
+const consigueCartaRandom = () : number => Math.floor(Math.random() * 10) + 1;
 
 const muestraPuntuacion = () : void => {
   const elementPuntuacion = document.getElementById("puntuacion");
-  if (elementPuntuacion instanceof HTMLInputElement) {
-  elementPuntuacion.innerHTML = puntuacion;
+  if (elementPuntuacion) {
+  elementPuntuacion.innerHTML = `${puntuacion}`;
   }
 }
 
