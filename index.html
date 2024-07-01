@@ -7,25 +7,26 @@
     <title>Juego de las Siete Media</title>
   </head>
   <body>
-    <h1>Juego de las Siete Media</h1>
-    <div id="contenedor-imagen">
-      <img
-        id="imagen"
-        src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
-      />
-      <button id="que-hubiese-pasado">¿Y si hubieses continuado?</button>
+    <div id="app">
+      <h1>Juego de las Siete Media</h1>
+      <div id="contenedor-imagen">
+        <img
+          id="imagen"
+          src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
+        />
+        <button id="que-hubiese-pasado">¿Y si hubieses continuado?</button>
+      </div>
+      <div id="display">
+        <h2>Puntuación</h2>
+        <p id="puntuacion"></p>
+      </div>
+      <div id="mensaje"></div>
+      <div id="contenedor-botones">
+        <button id="pedir-carta">Pedir carta</button>
+        <button id="nueva-partida">Nueva partida</button>
+        <button id="me-planto">Me planto</button>
+      </div>
     </div>
-    <div id="display">
-      <h2>Puntuación</h2>
-      <p id="puntuacion"></p>
-    </div>
-    <div id="mensaje"></div>
-    <div id="contenedor-botones">
-      <button id="pedir-carta">Pedir carta</button>
-      <button id="nueva-partida">Nueva partida</button>
-      <button id="me-planto">Me planto</button>
-    </div>
-  </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
