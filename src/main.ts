@@ -1,14 +1,6 @@
 import "./style.css";
 
-let puntuacion : number = 0;
-let estado : Estado;
-
-type Estado = 
-| "PERDEDOR"
-| "GANADOR"
-| "MENOR_DE_CUATRO"
-| "CINCO"
-| "SEIS_O_SIETE"
+import {partida, Estado} from './model';
 
 const imagen = document.getElementById("imagen");
 let mensaje = document.getElementById("mensaje");
@@ -26,7 +18,7 @@ botonMePlanto.disabled = true;
 const muestraPuntuacion = () : void => {
   const elementPuntuacion = document.getElementById("puntuacion");
   if (elementPuntuacion) {
-  elementPuntuacion.innerHTML = `${puntuacion}`;
+  elementPuntuacion.innerHTML = `${partida.puntuacion}`;
   }
 }
 
@@ -49,7 +41,7 @@ const dameCarta = () : void => {
   const puntos = obtenerPuntos(carta);
   const puntosSumados = sumarPuntos(puntos);
   actualizarPuntos(puntosSumados);
-  estado = comprobacionPuntuacion(puntuacion);
+  const estado = comprobacionPuntuacion(partida.puntuacion);
   muestraPuntuacion();
   if (carta !== 0) {
     if (botonMePlanto instanceof HTMLButtonElement) {
@@ -64,11 +56,11 @@ const obtenerPuntos = (carta: number) : number => {
 }
 
 const sumarPuntos = (puntosCarta : number) : number => {
-  return puntosCarta + puntuacion;
+  return puntosCarta + partida.puntuacion;
 }
 
 const actualizarPuntos = (puntosSumados : number) : void => {
-  puntuacion = puntosSumados;
+  partida.puntuacion = puntosSumados;
 }
 
 const comprobacionPuntuacion = (puntuacion: number) : Estado => {
@@ -128,6 +120,7 @@ const gestionarPartida = (estado: Estado) : void => {
 }
 
 const mePlanto = () : void => {
+  const estado = comprobacionPuntuacion(partida.puntuacion);
   const mensajeTexto = mensajeMePlanto(estado);
   mostrarMensaje(mensajeTexto);
   if (botonDameCarta instanceof HTMLButtonElement && botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
@@ -135,7 +128,7 @@ const mePlanto = () : void => {
   botonNuevaPartida.disabled = false;
   botonMePlanto.disabled = true;
 }
-  if (comprobacionPuntuacion(puntuacion) !== "GANADOR") {
+  if (comprobacionPuntuacion(partida.puntuacion) !== "GANADOR") {
     if (botonQueHubiesePasado instanceof HTMLButtonElement) {
       botonQueHubiesePasado.style.visibility = "visible";
     }
@@ -152,7 +145,7 @@ const queHubiesePasado = () : void => {
 
 const nuevaPartida = () : void => {
   const carta = 0;
-  puntuacion = 0;
+  partida.puntuacion = 0;
   muestraPuntuacion();
   const urlCarta = obtenerUrlCarta(carta);
   mostrarCarta(urlCarta);
