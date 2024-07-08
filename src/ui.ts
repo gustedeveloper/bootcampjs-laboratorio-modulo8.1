@@ -9,6 +9,33 @@ export const botonQueHubiesePasado = document.getElementById("que-hubiese-pasado
 export const botonNuevaPartida = document.getElementById("nueva-partida");
 export const botonMePlanto = document.getElementById("me-planto");
 
+export const inicializeUI = () => {
+  mensaje;
+  imagen;
+  botonDameCarta;
+  botonQueHubiesePasado;
+  botonNuevaPartida;
+  botonMePlanto;
+
+  if (botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement) {
+    botonNuevaPartida.disabled = true;
+    botonMePlanto.disabled = true;
+    }
+
+}
+ 
+export const handleButtonClicks = () => {
+  if (botonDameCarta instanceof HTMLButtonElement && botonNuevaPartida instanceof HTMLButtonElement && botonMePlanto instanceof HTMLButtonElement && botonQueHubiesePasado instanceof HTMLButtonElement) {
+    botonDameCarta.addEventListener("click", dameCarta);
+    
+    botonNuevaPartida.addEventListener("click", nuevaPartida);
+    
+    botonMePlanto.addEventListener("click", mePlanto);
+    
+    botonQueHubiesePasado.addEventListener("click", queHubiesePasado);
+    }
+}
+
 
 export const muestraPuntuacion = () : void => {
     const elementPuntuacion = document.getElementById("puntuacion");
