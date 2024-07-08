@@ -39,3 +39,7 @@ export const comprobacionPuntuacion = (puntuacion: number) : Estado => {
     } 
     return "PERDEDOR";
     }  
+
+export const inicializaPartida = () => {
+    return partida.puntuacion = 0;
+}

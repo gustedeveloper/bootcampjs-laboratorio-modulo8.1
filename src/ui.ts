@@ -1,6 +1,6 @@
 import {partida, Estado} from './model';
 
-import {consigueNumeroRandom, obtenerCarta, obtenerPuntos, sumarPuntos, actualizarPuntos, comprobacionPuntuacion} from './motor';
+import {inicializaPartida, consigueNumeroRandom, obtenerCarta, obtenerPuntos, sumarPuntos, actualizarPuntos, comprobacionPuntuacion} from './motor';
 
 export let mensaje = document.getElementById("mensaje");
 export const imagen = document.getElementById("imagen");
@@ -9,7 +9,7 @@ export const botonQueHubiesePasado = document.getElementById("que-hubiese-pasado
 export const botonNuevaPartida = document.getElementById("nueva-partida");
 export const botonMePlanto = document.getElementById("me-planto");
 
-export const inicializeUI = () => {
+export const inicializaUI = () => {
   mensaje;
   imagen;
   botonDameCarta;
@@ -47,7 +47,6 @@ export const muestraPuntuacion = () : void => {
 muestraPuntuacion();
 
 export const dameCarta = () : void => {
-    const botonMePlanto = document.getElementById("me-planto");
     const numeroAleatorio = consigueNumeroRandom();
     const carta = obtenerCarta(numeroAleatorio);
     const urlCarta = obtenerUrlCarta(carta);
@@ -127,8 +126,7 @@ export  const queHubiesePasado = () : void => {
   }
   
 export  const nuevaPartida = () : void => {
-    const carta = 0;
-    partida.puntuacion = 0;
+    const carta = inicializaPartida();
     muestraPuntuacion();
     const urlCarta = obtenerUrlCarta(carta);
     mostrarCarta(urlCarta);

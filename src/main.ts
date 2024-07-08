@@ -1,7 +1,7 @@
 import "./style.css";
 
-import {inicializeUI, handleButtonClicks} from './ui';
+import {inicializaUI, handleButtonClicks} from './ui';
 
-inicializeUI();
+inicializaUI();
 handleButtonClicks();
 
