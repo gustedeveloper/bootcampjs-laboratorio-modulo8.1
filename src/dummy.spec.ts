@@ -1,7 +1,6 @@
 import { Estado } from './model';
 
-import {  consigueNumeroRandom, obtenerCarta, comprobacionPuntuacion } from './motor';
-
+import { obtenerCarta, comprobacionPuntuacion } from './motor';
 
 import { dameCarta } from './ui';
 
@@ -35,4 +34,27 @@ describe("comprobacionPuntuacion", () => {
 
   });
 });
+
+// Comprobación de que al generarse el número aleatorio, si es mayor de 7, suma 2
+
+describe("obtenerCarta", () => {
+  it("si el número aleatorio es mayor que 7, debería devolver el número aleatorio + 2", () => {
+
+    // Arrange
+    const numeroAleatorio = 10;
+    const resultadoEsperado = 12;
+
+    // Act 
+    const resultado = obtenerCarta(numeroAleatorio);
+
+    // Assert 
+    expect(resultado).toBe(resultadoEsperado);
+
+
+  });
+
+});
+
+
+
 
