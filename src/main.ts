@@ -30,6 +30,7 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
             pacientesPediatriaMenoresdeDiezAnios.push(pacientes[i]);
         }
     }
+
     return pacientesPediatriaMenoresdeDiezAnios;
 }
 
@@ -44,7 +45,7 @@ const activarProtocoloUrgencia = (
 ): boolean => {
     let activarProtocolo = false;
     for (let i = 0; i < pacientes.length; i++) {
-        if (pacientes[i].frecuenciaCardiaca > 100 && pacientes[i].temperatura < 39) {
+        if (pacientes[i].frecuenciaCardiaca > 100 || pacientes[i].temperatura > 39) {
             activarProtocolo = true;
             nombresPacientesAfectados.push(pacientes[i].nombre)
         }
@@ -56,3 +57,22 @@ const activarProtocoloUrgencia = (
 
 console.log(`Protocolo urgencia activado: ${activarProtocoloUrgencia(pacientes)}. 
 Los siguientes pacientes necesitan asistencia urgente: ${nombresPacientesAfectados}`)
+
+// Apartado 3: reasignar pacientes de Pediatria a Médico de familia
+
+const reasignaPacientesAMedicoFamilia = (
+    pacientes: Pacientes[]
+): Pacientes[] => {
+    let pacientesPediatriaReasignados = obtenPacientesAsignadosAPediatria(pacientes);
+    for (let i = 0; i < pacientesPediatriaReasignados.length; i++) {
+                pacientesPediatriaReasignados[i] = {
+                ...pacientesPediatriaReasignados[i],
+                especialidad: "Medico de familia"
+                }
+            }
+
+    return pacientesPediatriaReasignados;
+
+}
+
+console.log("Lista de pacientes de Pediatria reasignados a Médico de Familia", reasignaPacientesAMedicoFamilia(pacientes))
