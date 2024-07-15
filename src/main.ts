@@ -35,3 +35,24 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
 
 console.log("Lista de pacientes de Pediatria menores de 10 años: ", obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
 
+// Apartado 2: protocolo de urgencia
+
+let nombresPacientesAfectados : string[] = [];
+
+const activarProtocoloUrgencia = (
+    pacientes: Pacientes[]
+): boolean => {
+    let activarProtocolo = false;
+    for (let i = 0; i < pacientes.length; i++) {
+        if (pacientes[i].frecuenciaCardiaca > 100 && pacientes[i].temperatura < 39) {
+            activarProtocolo = true;
+            nombresPacientesAfectados.push(pacientes[i].nombre)
+        }
+    }
+    
+    return activarProtocolo;
+    
+}
+
+console.log(`Protocolo urgencia activado: ${activarProtocoloUrgencia(pacientes)}. 
+Los siguientes pacientes necesitan asistencia urgente: ${nombresPacientesAfectados}`)
