@@ -75,4 +75,55 @@ const reasignaPacientesAMedicoFamilia = (
 
 }
 
-console.log("Lista de pacientes de Pediatria reasignados a Médico de Familia", reasignaPacientesAMedicoFamilia(pacientes))
+console.log("Lista de pacientes de Pediatria reasignados a Médico de Familia", reasignaPacientesAMedicoFamilia(pacientes));
+
+// Apartado 4: comprobar si en la lista hay algún paciente asignado a pediatría
+
+const hayPacientesDePediatria = (
+    pacientes: Pacientes[]
+    ): boolean => {
+    let hayPacientesDePediatria = false;
+    for (let i = 0; i < pacientes.length; i++) {
+      if (pacientes[i].especialidad === "Pediatra") {
+        hayPacientesDePediatria = true;
+      } else {
+        hayPacientesDePediatria;
+      }
+    }
+    return hayPacientesDePediatria;
+  };
+  
+  console.log(`¿Hay pacientes de pedriatría? ${hayPacientesDePediatria(pacientes)}`);
+  
+  // Apartado 5:  calcular el número total de pacientes que están asignados a la especialidad de Medico de familia, y lo que están asignados a Pediatría y a Cardiología
+  
+  interface NumeroPacientesPorEspecialidad {
+    medicoDeFamilia: number;
+    pediatria: number;
+    cardiologia: number;
+  }
+  
+  const cuentaPacientesPorEspecialidad = (
+    pacientes: Pacientes[]
+  ): NumeroPacientesPorEspecialidad => {
+
+    let numeroPacientesPorEspecialidad : NumeroPacientesPorEspecialidad = {
+        medicoDeFamilia: 0,
+        pediatria: 0,
+        cardiologia: 0
+        }
+
+    for (let i = 0; i < pacientes.length; i++) {
+      if (pacientes[i].especialidad === "Medico de familia") {
+        numeroPacientesPorEspecialidad.medicoDeFamilia++;
+      } else if (pacientes[i].especialidad === "Pediatra") {
+        numeroPacientesPorEspecialidad.pediatria++;
+      } else if (pacientes[i].especialidad === "Cardiólogo") {
+        numeroPacientesPorEspecialidad.cardiologia++;
+      }
+    }
+  
+      return numeroPacientesPorEspecialidad;
+  }
+
+  console.log("Total de pacientes por especialidad: ", cuentaPacientesPorEspecialidad(pacientes));
