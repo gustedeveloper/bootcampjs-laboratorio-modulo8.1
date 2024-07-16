@@ -1,8 +1,8 @@
 # Bootcamp JavaScript 2 - Lemoncode
 
-## Laboratorio Módulo 7 - Testing
+## Laboratorio Módulo 8.1 - Bucles
 
-Este ejercicio es parte del Bootcamp de JavaScript de Lemoncode y representa la séptima entrega correspondiente al Módulo 7 de Testing. Este laboratorio ha consistido en la creación de pruebas unitarias para probar nuestro código en funciones concretas y asegurarnos que las funciones testeadas estén, efectivamente, funcionando correctamente en los diferentes escenarios.
+Este ejercicio es parte del Bootcamp de JavaScript de Lemoncode y representa la octava entrega correspondiente al Módulo 8.1 de Bucles.
 
 ## Autor
 
