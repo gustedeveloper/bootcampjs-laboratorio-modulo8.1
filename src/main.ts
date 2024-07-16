@@ -11,7 +11,7 @@ const obtenPacientesAsignadosAPediatria = (
         let pacientesPediatria = [];
         for (let i = 0; i < pacientes.length; i++) {
             if (pacientes[i].especialidad === "Pediatra") {
-                pacientesPediatria.push(pacientes[i]);
+                pacientesPediatria = [...pacientesPediatria, pacientes[i]];
             }
         }
         return pacientesPediatria;
@@ -27,7 +27,7 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
     let pacientesPediatriaMenoresdeDiezAnios = [];
     for (let i = 0; i < pacientes.length; i++) {
         if (pacientes[i].especialidad === "Pediatra" && pacientes[i].edad < 10) {
-            pacientesPediatriaMenoresdeDiezAnios.push(pacientes[i]);
+            pacientesPediatriaMenoresdeDiezAnios = [...pacientesPediatriaMenoresdeDiezAnios, pacientes[i]];
         }
     }
 
