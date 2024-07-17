@@ -11,7 +11,7 @@ const obtenPacientesAsignadosAPediatria = (
         let pacientesPediatria = [];
         for (let i = 0; i < pacientes.length; i++) {
             if (pacientes[i].especialidad === "Pediatra") {
-                pacientesPediatria = [...pacientesPediatria, pacientes[i]];
+              pacientesPediatria.push(pacientes[i]);
             }
         }
         return pacientesPediatria;
@@ -27,7 +27,7 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
     let pacientesPediatriaMenoresdeDiezAnios = [];
     for (let i = 0; i < pacientes.length; i++) {
         if (pacientes[i].especialidad === "Pediatra" && pacientes[i].edad < 10) {
-            pacientesPediatriaMenoresdeDiezAnios = [...pacientesPediatriaMenoresdeDiezAnios, pacientes[i]];
+            pacientesPediatriaMenoresdeDiezAnios.push(pacientes[i]);
         }
     }
 
@@ -38,14 +38,11 @@ console.log("Lista de pacientes de Pediatria menores de 10 años: ", obtenPacien
 
 // Apartado 2: protocolo de urgencia
 
-let nombresPacientesAfectados : string[] = [];
-
 const activarProtocoloUrgencia = (
     pacientes: Pacientes[]
 ): boolean => {
     for (let i = 0; i < pacientes.length; i++) {
         if (pacientes[i].frecuenciaCardiaca > 100 || pacientes[i].temperatura > 39) {
-            nombresPacientesAfectados.push(pacientes[i].nombre)
             return true;
         }
     }
@@ -54,8 +51,7 @@ const activarProtocoloUrgencia = (
     
 }
 
-console.log(`Protocolo urgencia activado: ${activarProtocoloUrgencia(pacientes)}. 
-Los siguientes pacientes necesitan asistencia urgente: ${nombresPacientesAfectados}`)
+console.log(`Protocolo urgencia activado: ${activarProtocoloUrgencia(pacientes)}`); 
 
 // Apartado 3: reasignar pacientes de Pediatria a Médico de familia
 
