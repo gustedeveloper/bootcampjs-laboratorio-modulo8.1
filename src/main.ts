@@ -43,15 +43,14 @@ let nombresPacientesAfectados : string[] = [];
 const activarProtocoloUrgencia = (
     pacientes: Pacientes[]
 ): boolean => {
-    let activarProtocolo = false;
     for (let i = 0; i < pacientes.length; i++) {
         if (pacientes[i].frecuenciaCardiaca > 100 || pacientes[i].temperatura > 39) {
-            activarProtocolo = true;
             nombresPacientesAfectados.push(pacientes[i].nombre)
+            return true;
         }
     }
     
-    return activarProtocolo;
+    return false;
     
 }
 
@@ -82,15 +81,12 @@ console.log("Lista de pacientes de Pediatria reasignados a Médico de Familia", 
 const hayPacientesDePediatria = (
     pacientes: Pacientes[]
     ): boolean => {
-    let hayPacientesDePediatria = false;
     for (let i = 0; i < pacientes.length; i++) {
       if (pacientes[i].especialidad === "Pediatra") {
-        hayPacientesDePediatria = true;
-      } else {
-        hayPacientesDePediatria;
+        return true;
       }
     }
-    return hayPacientesDePediatria;
+    return false;
   };
   
   console.log(`¿Hay pacientes de pedriatría? ${hayPacientesDePediatria(pacientes)}`);
